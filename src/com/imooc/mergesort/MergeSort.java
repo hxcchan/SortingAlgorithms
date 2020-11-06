@@ -14,7 +14,17 @@ public class MergeSort {
         int i = l, j = mid + 1;
         for (int k = l; k <= r; k++) {
             if (i > mid) {
-                arr[k] = temp[j];
+                arr[k] = temp[j - l];
+                j++;
+            } else if (j > r){
+                arr[k] = temp[i - l];
+                i++;
+            } else if (temp[i - l].compareTo(temp[j - l]) <= 0 ) {
+                arr[k] = temp[i - l];
+                i++;
+            } else {
+                arr[k] = temp[j - l];
+                j++;
             }
         }
     }
